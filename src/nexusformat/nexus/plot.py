@@ -251,8 +251,8 @@ class PyplotPlotter:
                         kwargs["norm"] = Normalize(vmin, vmax)
 
                     from matplotlib import __version__ as mplversion
-                    from packaging.version import parse, Version
-                    if parse(mplversion) >= Version('3.5.0'):
+                    from packaging.version import Version
+                    if Version(mplversion) >= Version('3.5.0'):
                         from matplotlib import colormaps
                         cm = copy.copy(colormaps[cmap])
                     else:
@@ -291,7 +291,7 @@ class PyplotPlotter:
                                     im.set_clim(-0.5, 9.5)
                                 elif cmin == 1:
                                     im.set_clim(0.5, 10.5)
-                                if parse(mplversion) >= Version('3.5.0'):
+                                if Version(mplversion) >= Version('3.5.0'):
                                     cb.ax.set_ylim(cmin-0.5, cmax+0.5)
                                     cb.set_ticks(range(int(cmin), int(cmax)+1))
 
