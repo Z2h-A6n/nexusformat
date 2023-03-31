@@ -421,7 +421,7 @@ class NXFile:
         self.h5 = h5
         self.name = str(name)
         self._file = None
-        self._filename = str(Path(name).resolve())
+        self._filename = os.path.normpath(os.path.abspath(name))
         self._filedir = str(Path(self._filename).parent)
         self._lock = NXLock(self._filename, timeout=NX_CONFIG['lock'],
                             expiry=NX_CONFIG['lockexpiry'],
